@@ -1,2 +1,2 @@
 while True:
-    text = input("W-$ ")
+    text = input("W-$> ")
