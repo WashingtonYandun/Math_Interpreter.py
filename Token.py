@@ -31,7 +31,3 @@ class Token:
 
     def __rep__(self):
         return self.type.name + f":{self.value}" if self.value != None else ""
-
-
-t = Token()
-print(t.__rep__())
