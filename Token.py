@@ -1,6 +1,7 @@
 from dataclasses import dataclass
 from enum import Enum
 
+
 iota_count = 0
 
 
@@ -28,6 +29,9 @@ class Token:
     type: TokenType
     value: any = None  # depends on the token type
 
-    def __dev__(self):
-        val = f":{self.value}" if self.value != None else ""
-        return self.type.name + val
+    def __rep__(self):
+        return self.type.name + f":{self.value}" if self.value != None else ""
+
+
+t = Token()
+print(t.__rep__())
