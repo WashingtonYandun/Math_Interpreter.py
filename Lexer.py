@@ -1,7 +1,8 @@
 # DIGITS -> NUMBERS
 # SYMBOL -> SYMBOLS
 
-from Token import Token, TokenType
+from TokenType import TokenType
+from Token import Token
 
 
 class Lexer:
@@ -10,6 +11,7 @@ class Lexer:
         self.move()
 
     def move(self):
+        # move until None
         try:
             self.current_char = next(self.text)
         except StopIteration:
@@ -18,6 +20,7 @@ class Lexer:
     def gen_number(self):
         decimal_counter = 0  # for controlling the correct number of decimal points
         num_str = self.current_char
+
         self.move()
 
         while self.current_char != None and (self.current_char == '.' or self.current_char in '0123456789'):
@@ -27,6 +30,7 @@ class Lexer:
 
             if self.current_char == '.':
                 decimal_counter += 1
+
             num_str = num_str + self.current_char
             self.move()
 
@@ -41,7 +45,7 @@ class Lexer:
     def gen_tokens(self):
         while self.current_char != None:
             if self.current_char in ' \n\t':
-                # ignore the whitespaces
+                # ignore the whitespaces and tabs
                 self.move()
             elif self.current_char == '.' or self.current_char in '0123456789':
                 # use yield for 'returning' multiple stuff (tokens)
@@ -58,12 +62,27 @@ class Lexer:
             elif self.current_char == "/":
                 yield Token(TokenType.DIVIDE)
                 self.move()
+            elif self.current_char == "%":
+                yield Token(TokenType.PERCENT)
+                self.move()
             elif self.current_char == "(":
                 yield Token(TokenType.L_PAR)
                 self.move()
             elif self.current_char == ")":
                 yield Token(TokenType.R_PAR)
                 self.move()
+            elif self.current_char == "[":
+                yield Token(TokenType.L_BRAC)
+                self.move()
+            elif self.current_char == "]":
+                yield Token(TokenType.R_BRAC)
+                self.move()
+            elif self.current_char == "{":
+                yield Token(TokenType.L_CURL)
+                self.move()
+            elif self.current_char == "}":
+                yield Token(TokenType.R_CURL)
+                self.move()
             else:
-                # throw error
+                # ilegal char error
                 raise Exception(f"Illegal char '{self.current_char}' ")
