@@ -19,19 +19,23 @@ class Lexer:
         decimal_counter = 0  # for controlling the correct number of decimal points
         num_str = self.current_char
         self.move()
+
         while self.current_char != None and (self.current_char == '.' or self.current_char in '0123456789'):
+            if decimal_counter > 1:
+                # if there is more than one decimal point - break (cause error)
+                raise Exception(f"Illegal char '{self.current_char}'")
+
             if self.current_char == '.':
                 decimal_counter += 1
-                if decimal_counter > 1:
-                    # if there is more than one decimal point - break (cause error)
-                    # raise exception
-                    break
             num_str = num_str + self.current_char
             self.move()
+
         if num_str.startswith("."):
             num_str = "0" + num_str
+
         if num_str.endswith("."):
             num_str = num_str + "0"
+
         return Token(TokenType.NUMBER, float(num_str))
 
     def gen_tokens(self):
@@ -62,4 +66,4 @@ class Lexer:
                 self.move()
             else:
                 # throw error
-                raise Exception(f"Illegal char '{self.current_char}'")
+                raise Exception(f"Illegal char '{self.current_char}' ")
