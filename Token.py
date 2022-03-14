@@ -8,4 +8,4 @@ class Token:
     value: any = None  # depends on the token type
 
     def __rep__(self):
-        return self.type.name + f":{self.value}" if self.value != None else ""
+        return self.type.name + f"{self.value}" if self.value != None else ""

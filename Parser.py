@@ -1,9 +1,23 @@
 class Parser:
     def __init__(self, tokens):
-        pass
+        self.tokens = iter(tokens)
+        self.move()
 
     def move(self):
-        pass
+        try:
+            self.current_token = next(self.tokens)
+        except StopIteration:
+            self.current_token = None
 
     def parse(self):
-        pass
+        '''
+        if self.current_token == None:
+            return None
+
+        res = self.__repr__()
+
+        if self.current_token != None:
+            pass
+        '''
+
+        return 0
