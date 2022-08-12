@@ -5,5 +5,5 @@ from dataclasses import dataclass
 class NumberNode:
     value: float  # any
 
-    def __rep__(self):
+    def __to_str__(self):
         return f"{self.value}"

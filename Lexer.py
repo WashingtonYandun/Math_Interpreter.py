@@ -58,44 +58,44 @@ class Lexer:
                 self.move()
             elif self.current_char == '.' or self.current_char in '0123456789':
                 # use yield for 'returning' multiple stuff (tokens)
-                yield self.gen_number().__to_str__()
+                yield self.gen_number()
             elif self.current_char in 'cossintanlog':
-                yield self.gen_function().__to_str__()
+                yield self.gen_function()
             elif self.current_char == "+":
-                yield Token(TokenType.PLUS).__to_str__()
+                yield Token(TokenType.PLUS)
                 self.move()
             elif self.current_char == "-":
-                yield Token(TokenType.MINUS).__to_str__()
+                yield Token(TokenType.MINUS)
                 self.move()
             elif self.current_char == "*":
-                yield Token(TokenType.PRODUCT).__to_str__()
+                yield Token(TokenType.PRODUCT)
                 self.move()
             elif self.current_char == "/":
-                yield Token(TokenType.DIVIDE).__to_str__()
+                yield Token(TokenType.DIVIDE)
                 self.move()
             elif self.current_char == "%":
-                yield Token(TokenType.PERCENT).__to_str__()
+                yield Token(TokenType.PERCENT)
                 self.move()
             elif self.current_char == "^":
-                yield Token(TokenType.EXPONENT).__to_str__()
+                yield Token(TokenType.EXPONENT)
                 self.move()
             elif self.current_char == "(":
-                yield Token(TokenType.L_PAR).__to_str__()
+                yield Token(TokenType.L_PAR)
                 self.move()
             elif self.current_char == ")":
-                yield Token(TokenType.R_PAR).__to_str__()
+                yield Token(TokenType.R_PAR)
                 self.move()
             elif self.current_char == "[":
-                yield Token(TokenType.L_BRAC).__to_str__()
+                yield Token(TokenType.L_BRAC)
                 self.move()
             elif self.current_char == "]":
-                yield Token(TokenType.R_BRAC).__to_str__()
+                yield Token(TokenType.R_BRAC)
                 self.move()
             elif self.current_char == "{":
-                yield Token(TokenType.L_CURL).__to_str__()
+                yield Token(TokenType.L_CURL)
                 self.move()
             elif self.current_char == "}":
-                yield Token(TokenType.R_CURL).__to_str__()
+                yield Token(TokenType.R_CURL)
                 self.move()
             else:
                 # ilegal char error
