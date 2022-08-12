@@ -42,6 +42,18 @@ class Lexer:
 
         return Token(TokenType.NUMBER, float(num_str))
 
+    def gen_trig_function(self):
+        func_str = self.current_char
+        self.move()
+        while self.current_char != None and (self.current_char in 'cosinta'):
+            func_str = func_str + self.current_char
+            self.move()
+
+        if func_str in ["cos", "sin", "tan"]:
+            return Token(TokenType.FUNCTION, func_str)
+        else:
+            raise Exception(f"Illegal char '{self.current_char}' ")
+
     def gen_tokens(self):
         while self.current_char != None:
             if self.current_char in ' \n\t':
@@ -50,6 +62,8 @@ class Lexer:
             elif self.current_char == '.' or self.current_char in '0123456789':
                 # use yield for 'returning' multiple stuff (tokens)
                 yield self.gen_number()
+            elif self.current_char in 'cosinta':
+                yield self.gen_trig_function()
             elif self.current_char == "+":
                 yield Token(TokenType.PLUS)
                 self.move()
@@ -64,6 +78,9 @@ class Lexer:
                 self.move()
             elif self.current_char == "%":
                 yield Token(TokenType.PERCENT)
+                self.move()
+            elif self.current_char == "^":
+                yield Token(TokenType.EXPONENT)
                 self.move()
             elif self.current_char == "(":
                 yield Token(TokenType.L_PAR)

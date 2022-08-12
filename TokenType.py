@@ -17,12 +17,13 @@ def iota(restart=False):
 
 class TokenType(Enum):
     NUMBER = iota()
-    PLUS = iota()
 
+    PLUS = iota()
     MINUS = iota()
     PRODUCT = iota()
     DIVIDE = iota()
     PERCENT = iota()
+    EXPONENT = iota()
 
     L_PAR = iota()
     R_PAR = iota()
@@ -30,3 +31,5 @@ class TokenType(Enum):
     R_BRAC = iota()
     L_CURL = iota()
     R_CURL = iota()
+
+    FUNCTION = iota()
