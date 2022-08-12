@@ -1,6 +1,3 @@
-# DIGITS -> NUMBERS
-# SYMBOL -> SYMBOLS
-
 from TokenType import TokenType
 from Token import Token
 
@@ -42,14 +39,14 @@ class Lexer:
 
         return Token(TokenType.NUMBER, float(num_str))
 
-    def gen_trig_function(self):
+    def gen_function(self):
         func_str = self.current_char
         self.move()
-        while self.current_char != None and (self.current_char in 'cosinta'):
+        while self.current_char != None and (self.current_char in 'cossintanlog'):
             func_str = func_str + self.current_char
             self.move()
 
-        if func_str in ["cos", "sin", "tan"]:
+        if func_str in ["cos", "sin", "tan", "log"]:
             return Token(TokenType.FUNCTION, func_str)
         else:
             raise Exception(f"Illegal char '{self.current_char}' ")
@@ -61,44 +58,44 @@ class Lexer:
                 self.move()
             elif self.current_char == '.' or self.current_char in '0123456789':
                 # use yield for 'returning' multiple stuff (tokens)
-                yield self.gen_number()
-            elif self.current_char in 'cosinta':
-                yield self.gen_trig_function()
+                yield self.gen_number().__to_str__()
+            elif self.current_char in 'cossintanlog':
+                yield self.gen_function().__to_str__()
             elif self.current_char == "+":
-                yield Token(TokenType.PLUS)
+                yield Token(TokenType.PLUS).__to_str__()
                 self.move()
             elif self.current_char == "-":
-                yield Token(TokenType.MINUS)
+                yield Token(TokenType.MINUS).__to_str__()
                 self.move()
             elif self.current_char == "*":
-                yield Token(TokenType.PRODUCT)
+                yield Token(TokenType.PRODUCT).__to_str__()
                 self.move()
             elif self.current_char == "/":
-                yield Token(TokenType.DIVIDE)
+                yield Token(TokenType.DIVIDE).__to_str__()
                 self.move()
             elif self.current_char == "%":
-                yield Token(TokenType.PERCENT)
+                yield Token(TokenType.PERCENT).__to_str__()
                 self.move()
             elif self.current_char == "^":
-                yield Token(TokenType.EXPONENT)
+                yield Token(TokenType.EXPONENT).__to_str__()
                 self.move()
             elif self.current_char == "(":
-                yield Token(TokenType.L_PAR)
+                yield Token(TokenType.L_PAR).__to_str__()
                 self.move()
             elif self.current_char == ")":
-                yield Token(TokenType.R_PAR)
+                yield Token(TokenType.R_PAR).__to_str__()
                 self.move()
             elif self.current_char == "[":
-                yield Token(TokenType.L_BRAC)
+                yield Token(TokenType.L_BRAC).__to_str__()
                 self.move()
             elif self.current_char == "]":
-                yield Token(TokenType.R_BRAC)
+                yield Token(TokenType.R_BRAC).__to_str__()
                 self.move()
             elif self.current_char == "{":
-                yield Token(TokenType.L_CURL)
+                yield Token(TokenType.L_CURL).__to_str__()
                 self.move()
             elif self.current_char == "}":
-                yield Token(TokenType.R_CURL)
+                yield Token(TokenType.R_CURL).__to_str__()
                 self.move()
             else:
                 # ilegal char error
