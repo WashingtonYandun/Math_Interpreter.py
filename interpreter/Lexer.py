@@ -1,5 +1,5 @@
-from TokenType import TokenType
-from Token import Token
+from interpreter.TokenType import TokenType
+from interpreter.Token import Token
 
 
 class Lexer:

@@ -1,15 +1,15 @@
-from AddNode import AddNode
-from ExponentNode import ExponentNode
-from PercentNode import PercentNode
-from SubstractNode import SubstractNode
-from ProductNode import ProductNode
-from DivideNode import DivideNode
+from nodes.AddNode import AddNode
+from nodes.ExponentNode import ExponentNode
+from nodes.PercentNode import PercentNode
+from nodes.SubstractNode import SubstractNode
+from nodes.ProductNode import ProductNode
+from nodes.DivideNode import DivideNode
 from dataclasses import dataclass
-from PlusNode import PlusNode
-from MinusNode import MinusNode
-from NumberNode import NumberNode
-from Token import Token
-from TokenType import TokenType
+from nodes.PlusNode import PlusNode
+from nodes.MinusNode import MinusNode
+from nodes.NumberNode import NumberNode
+from interpreter.Token import Token
+from interpreter.TokenType import TokenType
 
 
 class Parser:
@@ -71,25 +71,5 @@ class Parser:
         if current_token.type == TokenType.NUMBER:
             self.move()
             return NumberNode(current_token.value)
-            '''
-            elif self.current_token.type == TokenType.L_PAR:
-            self.move()
-            res = self.parse_factor()
-            if current_token.type != TokenType.R_PAR:
-                raise Exception("Expected )")
-            self.move()
-            return res
-            
-            elif current_token.type == TokenType.FUNCTION:
-                self.move()
-                if current_token.type != TokenType.L_PAR:
-                    raise Exception("Expected (")
-                self.move()
-                res = self.parse_expr()
-                if current_token.type != TokenType.R_PAR:
-                    raise Exception("Expected )")
-                self.move()
-                return res
-            '''
         else:
             raise Exception("Unexpected token")

@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from TokenType import TokenType
+from interpreter.TokenType import TokenType
 
 
 @dataclass

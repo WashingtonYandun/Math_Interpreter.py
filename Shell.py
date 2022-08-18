@@ -1,4 +1,4 @@
-from Lexer import Lexer
+from interpreter.Lexer import Lexer
 from Parser import Parser
 
 while True:
