@@ -1,8 +1,8 @@
 from interpreter.Lexer import Lexer
-from Parser import Parser
+from interpreter.Parser import Parser
 
 while True:
-    text = input("(~ W$ ~) > ")
+    text = input("(W$) > ")
     lexer = Lexer(text)
     tokens = lexer.gen_tokens()
     parser = Parser(tokens)
