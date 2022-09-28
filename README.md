@@ -1,6 +1,10 @@
 # Math Interpreter
 
-This is simple a math interpreter made in python
+This is simple a math interpreter, made in python.
+
+## Tech Stack
+
+-   [x] [python](https://www.python.org/)
 
 ## Features (AM WORKING ON THEM)
 
@@ -8,8 +12,6 @@ This is simple a math interpreter made in python
 -   Supports basic trigonometry operations
 -   Supports basic logarithmic operations
 -   Supports basic exponential operations
--   Supports basic power operations
--   Supports basic root operations
 -   Supports basic absolute value operations
 -   Supports basic factorial operations
 -   Supports basic modulo operations
