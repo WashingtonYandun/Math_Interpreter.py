@@ -1,5 +1,6 @@
 # ignore pycache
 /__pycache__/
+/interpreter/__pycache__/
 
 # ignore pycache on nodes directory
 /nodes/__pycache__/

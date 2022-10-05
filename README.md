@@ -4,7 +4,7 @@ This is simple a math interpreter, made in python.
 
 ## Tech Stack
 
--   [x] [python](https://www.python.org/)
+-   [python](https://www.python.org/)
 
 ## Features (AM WORKING ON THEM)
 
